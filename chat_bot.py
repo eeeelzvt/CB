@@ -62,6 +62,8 @@ def stopword_(text):
 
 
 def chat_tfidf(text):
+    df = pd.read_excel('C:/Users/Дмитрий/Desktop/test.xlsx')
+    df['lemmatized_text'] = df['Context'].apply(text_normalization)
     lemma=text_normalization(text) # calling the function to perform text normalization
     tfidf = TfidfVectorizer()  # intializing tf-id
     x_tfidf = tfidf.fit_transform(df['lemmatized_text']).toarray()  # transforming the data into array
@@ -70,12 +72,7 @@ def chat_tfidf(text):
     cos=1-pairwise_distances(df_tfidf,tf,metric='cosine') # applying cosine similarity
     index_value=cos.argmax() # getting index value
     return df['Text Response'].loc[index_value]
-
-
-df = pd.read_excel('C:/Users/Дмитрий/Desktop/test.xlsx')
-df['lemmatized_text'] = df['Context'].apply(text_normalization)  # applying the fuction to the dataset to get clean text 
+ # applying the fuction to the dataset to get clean text
 
 # defining a function that returns response to query using tf-idf
-
-
-print(chat_tfidf('hi there'))
+print(chat_tfidf('У меня не работает перевод средств между счетами. Что делать? '))
