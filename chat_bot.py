@@ -73,7 +73,7 @@ def chat_tfidf(text):
 
 
 df = pd.read_excel('C:/Users/Дмитрий/Desktop/test.xlsx')
-df['lemmatized_text'] = df['Context'].apply(text_normalization)  # applying the fuction to the dataset to get clean text
+df['lemmatized_text'] = df['Context'].apply(text_normalization)  # applying the fuction to the dataset to get clean text 
 
 # defining a function that returns response to query using tf-idf
 
