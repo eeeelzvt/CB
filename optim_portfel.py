@@ -2,9 +2,9 @@ from matplotlib import pyplot as plt
 import numpy as np
 
 def krug_portfel(data =[], money = []):
-    money = ['USD', 'EURO', 'RUB','CNY', 'JAGUAR', 'MERCEDES']
+    money = ['USD', 'EUR', 'RUB', 'GBP']
 
-    data = [23, 17, 35, 29, 12, 41]
+    data = [23, 17, 35, 29]
 
     # Creating plot
     fig = plt.figure(figsize=(10, 7))
