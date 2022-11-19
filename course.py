@@ -8,7 +8,7 @@ from statsmodels.tsa.arima.model import ARIMA
 from sklearn.metrics import mean_absolute_percentage_error
 
 
-def get_exchange_list_xrates(currency, amount=1):
+def get_exchange_list_xrates(currency='RUB', amount=1):
     # make the request to x-rates.com to get current exchange rates for common currencies
     content = requests.get(f"https://www.x-rates.com/table/?from={currency}&amount={amount}").content
     # initialize beautifulsoup
@@ -30,12 +30,5 @@ def get_exchange_list_xrates(currency, amount=1):
     return price_datetime, exchange_rates
 
 
-if __name__ == "__main__":
-    import sys
-
-    source_currency = 'RUB'
-    amount = float(1)
-    target_currency = "GBP"
-    price_datetime, exchange_rates = get_exchange_list_xrates(source_currency, amount)
-    print("Last updated:", price_datetime)
-    pprint(exchange_rates)
+price_datetime, exchange_rates = get_exchange_list_xrates(amount = 1)
+pprint(exchange_rates)
